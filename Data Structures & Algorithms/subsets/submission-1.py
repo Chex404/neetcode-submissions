@@ -1,0 +1,23 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        
+        curr_sub = []
+        def dfs(i):
+            if i >= len(nums):
+                res.append(curr_sub.copy())
+                return
+            
+            #decision to include nums[i]
+            curr_sub.append(nums[i])
+            dfs(i + 1)
+
+            #decision to NOT include nums[i]
+            curr_sub.pop()
+            dfs(i+1)
+
+        dfs(0)
+        return res
+
+
+        
